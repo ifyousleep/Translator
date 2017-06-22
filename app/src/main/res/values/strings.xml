@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Translator</string>
+    <string name="go">GO</string>
+    <string name="star">star</string>
+    <string name="lang_spinner">Langs</string>
+    <string name="favorite">Favorite</string>
+    <string name="langs_title">Translate to..</string>
+    <string name="icon">icon</string>
+    <string name="copy">copy</string>
+    <string name="succes">Success</string>
+    <string name="undo">UNDO</string>
+    <string name="letsgo">Go translate</string>
+    <string name="swipetodel">Swipe to delete</string>
+</resources>

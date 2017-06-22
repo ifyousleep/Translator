@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    defaultConfig {
+        applicationId "com.baranov.translator"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVER_URL", '"https://translate.yandex.net"'
+            buildConfigField "String", "SERVER_KEY", '"trnsl.1.1.20170621T080807Z.12f226363dc3efda.66eda0ad10ce71bcef0bdfd8682dd8c36c9f3b0e"'
+        }
+        debug {
+            buildConfigField "String", "SERVER_URL", '"https://translate.yandex.net"'
+            buildConfigField "String", "SERVER_KEY", '"trnsl.1.1.20170621T080807Z.12f226363dc3efda.66eda0ad10ce71bcef0bdfd8682dd8c36c9f3b0e"'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "com.android.support:design:$support_version"
+    compile "com.android.support:cardview-v7:$support_version"
+    testCompile 'junit:junit:4.12'
+
+    // moxy
+    compile "com.arello-mobile:moxy:$moxy_version"
+    provided "com.arello-mobile:moxy-compiler:$moxy_version"
+    compile "com.arello-mobile:moxy-app-compat:$moxy_version"
+    // retrofit
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    // butter knife
+    compile "com.jakewharton:butterknife:$butterknife_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
+    // dagger2
+    compile "com.google.dagger:dagger:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    // greendao
+    compile 'org.greenrobot:greendao:3.2.2'
+}
